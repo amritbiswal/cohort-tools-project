@@ -31,12 +31,12 @@ app.get("/docs", (req, res) => {
 
 app.get("/api/cohorts", (req, res) => {
   // Return list of cohorts
-  res.sendFile(path.join(__dirname, "data", "cohorts.json")); // Placeholder response
+  res.sendFile(path.join(__dirname, "data", "cohorts.json"));
 });
 
 app.get("/api/students", (req, res) => {
   // Return list of students
-  res.sendFile(path.join(__dirname, "data", "students.json")); // Placeholder response
+  res.sendFile(path.join(__dirname, "data", "students.json"));
 });
 
 // START SERVER

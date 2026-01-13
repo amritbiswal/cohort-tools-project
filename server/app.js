@@ -22,8 +22,8 @@ const app = express();
 // CONNECT TO MONGODB - https://mongoosejs.com/docs/connections.html
 mongoose
   .connect("mongodb://127.0.0.1:27017/cohort-tools-api")
-  .then(x => console.log(`Connected to Database: "${x.connections[0].name}"`))
-  .catch(err => console.error("Error connecting to MongoDB", err));
+  .then((x) => console.log(`Connected to Database: "${x.connections[0].name}"`))
+  .catch((err) => console.error("Error connecting to MongoDB", err));
 
 // MIDDLEWARE
 // Research Team - Set up CORS middleware here:
@@ -33,12 +33,13 @@ app.use(morgan("dev"));
 app.use(express.static("public"));
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(cors(
-  {origin: ['http://localhost:5173'] // Allow requests from this origin
-  //  methods: ['GET', 'POST', 'PUT', 'DELETE'], // Allowed methods
-  //  credentials: true // Allow cookies to be sent
-  }
-));
+app.use(
+  cors({
+    origin: ["http://localhost:5173"], // Allow requests from this origin
+    //  methods: ['GET', 'POST', 'PUT', 'DELETE'], // Allowed methods
+    //  credentials: true // Allow cookies to be sent
+  })
+);
 
 // ROUTES - https://expressjs.com/en/starter/basic-routing.html
 // Devs Team - Start working on the routes here:
@@ -65,7 +66,6 @@ app.get("/api/students", async (req, res) => {
   // res.sendFile(path.join(__dirname, "data", "students.json"));
   try {
     const students = await Student.find().populate("cohort");
-    console.log(students);
     res.status(200).json(students);
   } catch (error) {
     res.status(500).json({ message: "Error retrieving students", error });

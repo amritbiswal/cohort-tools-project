@@ -20,7 +20,12 @@ app.use(morgan("dev"));
 app.use(express.static("public"));
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(cors());
+app.use(cors(
+  {origin: ['http://localhost:5173'] // Allow requests from this origin
+  //  methods: ['GET', 'POST', 'PUT', 'DELETE'], // Allowed methods
+  //  credentials: true // Allow cookies to be sent
+  }
+));
 
 // ROUTES - https://expressjs.com/en/starter/basic-routing.html
 // Devs Team - Start working on the routes here:

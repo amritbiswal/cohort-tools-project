@@ -16,6 +16,12 @@ const app = express();
 // ...
 require("./config")(app);
 
+const authRoutes = require("./routes/auth.routes");
+app.use("/auth", authRoutes);
+
+const usersRoutes = require("./routes/users.routes");
+app.use("/api/users", usersRoutes);
+
 const cohortsRoutes = require("./routes/cohorts.routes");
 app.use("/api/cohorts", cohortsRoutes);
 

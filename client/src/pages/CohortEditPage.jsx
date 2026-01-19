@@ -64,7 +64,7 @@ function CohortEditPage() {
   axios
     .delete(`${API_URL}/api/cohorts/${cohortId}`)
     .then(() => {
-      navigate("/cohorts");
+      navigate("/dashboard");
     })
     .catch((error) => console.log(error));
 };
@@ -100,7 +100,7 @@ function CohortEditPage() {
       {showDeleteConfirmation && (
         <div className="absolute inset-0 bg-white flex flex-col justify-center items-center border border-gray-300 rounded-md p-4 shadow-md z-50">
           <p className="mb-4">
-            Are you sure you want to delete this cohortList?
+            Are you sure you want to delete this Cohort from the Dashboard?
           </p>
           <div className="flex space-x-4">
             <button

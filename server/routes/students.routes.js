@@ -69,4 +69,18 @@ router.delete("/:id", async (req, res, next) => {
   }
 });
 
+// GET /api/students/cohort/:cohortId
+
+router.get("/cohort/:cohortId", async (req, res, next) => {
+  // Return students by cohort ID
+  try {
+    const students = await Student.find({
+      cohort: req.params.cohortId,
+    }).populate("cohort");
+    res.status(200).json(students);
+  } catch (error) {
+    next(new CustomError("Error retrieving students by cohort", 500));
+  }
+});
+
 module.exports = router;
